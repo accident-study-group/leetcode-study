@@ -4,12 +4,11 @@ using namespace std;
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        map<int, int> nums_map;        
+        unordered_map<int, int> nums_map;        
         for(auto const &num : nums)
         {   
             if(nums_map.count(target - num)){
-                int idx =  &num - &nums[0];                
-                return {idx, nums_map[target - num]};
+                return {nums_map[target - num], (int)(&num - &nums[0])};
             }
             nums_map[num] = &num - &nums[0];
         }       
@@ -17,6 +16,6 @@ public:
         return {};
     }
 
-    // Runtime: 9 ms, faster than 94.57% of C++ online submissions for Two Sum.
-    // Memory Usage: 11 MB, less than 24.23% of C++ online submissions for Two Sum.
+    // Runtime: 7 ms, faster than 98.29% of C++ online submissions for Two Sum.
+    // Memory Usage: 10.9 MB, less than 47.70% of C++ online submissions for Two Sum.
 };
