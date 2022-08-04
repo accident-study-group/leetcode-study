@@ -10,7 +10,6 @@ public:
             if(nums_map.count(target - num)){
                 int idx =  &num - &nums[0];                
                 return {idx, nums_map[target - num]};
-                break;
             }
             nums_map[num] = &num - &nums[0];
         }       
