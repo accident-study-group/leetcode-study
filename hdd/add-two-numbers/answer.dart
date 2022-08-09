@@ -10,31 +10,21 @@ class Solution {
   ListNode? addTwoNumbers(ListNode? l1, ListNode? l2) {
     int carry = 0;
     ListNode sumNode = ListNode();
-
-    ListNode? tempNode1 = l1;
-    ListNode? tempNode2 = l2;
     ListNode? pointer = sumNode;
 
     while(pointer != null){
-      int sum = (tempNode1?.val ?? 0)+ (tempNode2?.val ?? 0) + carry;
-      carry = 0;
+      int sum = (l1?.val ?? 0)+ (l2?.val ?? 0) + pointer.val;
+      pointer.val = sum % 10;
 
-      if(sum >= 10){
-        carry = 1;
-        sum -= 10;
+      // 선호하지 않는 방법이지만, 메모리 사용량 줄이기 + 파라미터를 다시 사용할 일이 없어서
+      // 파라미터로 받은 링크드리스트를 바로 사용.
+      if((l1?.next != null || l2?.next != null) || sum >= 10){
+        pointer.next = ListNode(sum ~/ 10);
+        l1 = l1?.next;
+        l2 = l2?.next;
       }
 
-      pointer?.val = sum;
-
-
-      tempNode1 = tempNode1?.next;
-      tempNode2 = tempNode2?.next;
-
-      if(tempNode1 != null || tempNode2 != null || carry != 0){
-        pointer?.next = ListNode();
-      }
-
-      pointer = pointer?.next;
+      pointer = pointer.next;
     }
 
     return sumNode;
@@ -42,5 +32,5 @@ class Solution {
 }
 
 
-// Runtime: 790 ms, faster than 16.67% of Dart online submissions for Add Two Numbers.
-// Memory Usage: 154.6 MB, less than 50.00% of Dart online submissions for Add Two Numbers.
+// Runtime: 672 ms, faster than 50% of Dart online submissions for Add Two Numbers.
+// Memory Usage: 148.1 MB, less than 100.00% of Dart online submissions for Add Two Numbers.
