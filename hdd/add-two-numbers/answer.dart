@@ -8,7 +8,12 @@
  */
 class Solution {
   ListNode? addTwoNumbers(ListNode? l1, ListNode? l2) {
-    int carry = 0;
+
+    // 테스트케이스에 둘 중 하나가 null로 들어오는 일이 별로 없는지 넣었을 때 퍼포먼스가 더 적게 나오는 것 같음.
+    // 실제로 사용하는 코드라면 꼭 넣을듯.
+//        if (l1 == null) return l2
+//        if (l2 == null) return l1
+
     ListNode sumNode = ListNode();
     ListNode? pointer = sumNode;
 
@@ -31,6 +36,11 @@ class Solution {
   }
 }
 
+// 성능이 너무 왔다갔다함... 메로리가 최고였다가 ... 속도가 최고였다가... ㅠ
 
-// Runtime: 672 ms, faster than 50% of Dart online submissions for Add Two Numbers.
+// Runtime: 672 ms, faster than 66% of Dart online submissions for Add Two Numbers.
 // Memory Usage: 148.1 MB, less than 100.00% of Dart online submissions for Add Two Numbers.
+
+
+// Runtime: 607 ms, faster than 100.00% of Dart online submissions for Add Two Numbers.
+// Memory Usage: 152.4 MB, less than 66.67% of Dart online submissions for Add Two Numbers.
