@@ -9,14 +9,19 @@ class Solution:
             if l == m == r:
                 start += 1
                 continue
-            maximum = max(l, m, r)
-            if self.in_right(m, target, r, mixed=(m == maximum)):
+            if self.in_left(l, m, target):
+                start, end = start + 1, mid - 1
+            elif self.in_right(r, m, target):
                 start, end = mid + 1, end - 1
             else:
-                start, end = start + 1, mid - 1
-        return False
+                return False
 
-    def in_right(self, m: int, x: int, r: int, mixed: bool) -> bool:
-        if mixed:
-            return m <= x or x <= r
-        return m <= x and x <= r
+    def in_left(self, l: int, m: int, x: int) -> bool:
+        if l > m:
+            return l <= x or x < m
+        return l <= x and x < m
+
+    def in_right(self, r: int, m: int, x: int) -> bool:
+        if r < m:
+            return m < x or x <= r
+        return m < x and x <= r
