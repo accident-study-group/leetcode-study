@@ -1,0 +1,57 @@
+class Solution {
+    fun calculate(s: String): Int {
+        var curNum = 0
+        var stack = Stack<Int>()
+
+        // 첫 오퍼레이션을 +로 설정해둬서 처음 기호를 만났을 때 무조건 stack 에 저장
+        // 마지막 기호를 계속 캐시해둬서 stack 기호를 저장할 필요가 없음.
+        var operation: Char = '+'
+
+        // for문만 사용했었는데 forEachIndexed 사용.
+        // 다음엔 이걸 사용해보기로 !
+        s.forEachIndexed { idx, it ->
+
+            // substring을 사용해서 계속 잘라서 사용했었는데
+            // String을 계속 더해가며 연산
+            if (Character.isDigit(it)) {
+                curNum = curNum*10 + Character.getNumericValue(it)
+
+            // 공백 무시. trim 사용 안해도됨.
+            }else if (!(it == ' ')){
+                if (operation == '-') {
+                    stack.push(-curNum)
+                }else if (operation == '+') {
+                    stack.push(curNum)
+                }else if (operation == '*') {
+                    stack.push(stack.pop() * curNum)
+                }else if (operation == '/') {
+                    stack.push(stack.pop() / curNum)
+                }
+                operation = it
+                curNum = 0
+            }
+
+
+            if (idx == s.length-1) {
+                 if (operation == '-') {
+                    stack.push(-curNum)
+                }else if (operation == '+') {
+                    stack.push(curNum)
+                }else if (operation == '*') {
+                    stack.push(stack.pop() * curNum)
+                }else if (operation == '/') {
+                    stack.push(stack.pop() / curNum)
+                }
+                operation = it
+                curNum = 0
+            }
+
+        }
+
+        var result = 0
+        while (!stack.isEmpty()) {
+            result+= stack.pop()
+        }
+        return result
+    }
+}
