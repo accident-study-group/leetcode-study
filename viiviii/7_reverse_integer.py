@@ -1,13 +1,19 @@
+import math
+
 class Solution:
     def reverse(self, x: int) -> int:
-        is_positive = (x > 0)
-        dividend = abs(x)
-        reversed = 0
-        while dividend:
-            if reversed > 2_147_483_64:
-                return 0
-            if reversed == 2_147_483_64 and dividend > (7 if is_positive else 8):
-                return 0
-            dividend, r = divmod(dividend, 10)
-            reversed = reversed * 10 + r
-        return reversed if is_positive else reversed * -1
+        is_negative = (x < 0)
+        r = str(abs(x))[::-1]
+        if self.outside_range(r, is_negative):
+            return 0
+        return int(r) * (-1 if is_negative else 1)
+    
+    def outside_range(self, r: str, is_negative: bool) -> bool:
+        if not r[9:]:
+            return False
+        nums = int(r[:9])
+        digit = int(r[9:])
+        MAX = 2 ** 31 - (1 if not is_negative else 0)
+        if nums != (MAX // 10):
+            return nums > (MAX // 10)
+        return digit > (MAX % 10)
