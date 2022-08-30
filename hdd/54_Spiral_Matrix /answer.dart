@@ -4,11 +4,18 @@ class Solution {
 
     int width = matrix[0].length;
     int height = matrix.length;
-
+    int diff = height - width;
     int padding = 0;
 
+    var count = 0;
+    if(height - width > 0){
+      count = (height * 2 - 1) - (diff * 2 - 1);
+    }else {
+      count = height * 2 - 1;
+    }
 
-    for(int i = 0; i < width + height - 1; i++){
+
+    for(int i = 0; i < count; i++){
       if(i % 4 == 0){
         for(int x = padding ~/ 2; x < width - padding ~/ 2; x++){
           snailArray.add(matrix[0 + padding ~/ 2][x]);
@@ -42,5 +49,3 @@ class Solution {
 
   }
 }
-
-// 틀린 케이스 6, 9, 7 => 반복문 조건에 부합하지 않음. 1 + 3 - 1 = 3 
