@@ -23,7 +23,7 @@ public:
         // directon에 따라 (x,y)를 이동할 방향을 정해줌
         // ex) direction = 0일 때, dx[direction] = 0, dy[direction] = 1이 되어 (0,1)만큼 2차원 배열 내에서 좌표를 움직인다.
 
-        while (1)
+        while (x_max >= 0 && y_max >= 0)
         {
             if (isCurrentY)
             {
@@ -46,15 +46,10 @@ public:
                 x_max--;
             }
 
-            isCurrentY = !isCurrentY;
+            isCurrentY = !isCurrentY; // y축을 움직였으면 다음은 x축을 움직여야함
 
             direction++;
-            if (direction > 3)
-                direction = 0;
-            if (x_max < 0 || y_max < 0)
-            {
-                break;
-            }
+            direction %= 4;
         }
 
         return answer;
