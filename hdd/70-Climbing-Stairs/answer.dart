@@ -5,12 +5,16 @@ class Solution {
     // ....
     // 2가 n/2 개인 경우 -> n ~ 2 C n ~/2
 
-    int twoCounts = 0;
+
+    // n에서 찾을 수 있는 2의 최대 수
+    int maximumTwoCount = n ~/ 2;
+    // 현재 탐색하고 있는 2의 수
+    int twoCount = 0;
     int sum = 0;
 
-    while (twoCounts <= (n / 2)) {
-      sum += combination(n - twoCounts, twoCounts).round();
-      twoCounts++;
+    while (twoCount <= maximumTwoCount) {
+      sum += combination(n - twoCount, twoCount).round();
+      twoCount++;
     }
     return sum;
   }
