@@ -1,0 +1,31 @@
+coverage/
+dist/
+node_modules/
+
+# environment variables
+**/.env
+**/.env.development*
+**/.env.production*
+**/.env.test*
+
+# environment variables
+**/.env
+**/.env.development*
+**/.env.production*
+**/.env.test*
+
+# logs
+**/*.log
+**/*.logs
+
+# OS X
+.DS_Store
+
+# JetBrains IDE
+.idea/
+
+# VS Code
+.vscode/
+
+# not using npm
+package-lock.json
