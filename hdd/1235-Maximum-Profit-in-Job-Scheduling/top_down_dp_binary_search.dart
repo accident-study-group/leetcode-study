@@ -1,7 +1,7 @@
 import 'dart:math';
 
 class Solution {
-  List<int> memo = [];
+  List<int> memo = List<int>.filled(50001, 0);
 
   int jobScheduling(List<int> startTime, List<int> endTime, List<int> profit) {
     List<List<int>> jobs = [];
