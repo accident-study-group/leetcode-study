@@ -37,3 +37,7 @@
 |       | [128. Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/)                                   |
 | 10주 차 | [212. Word Search II](https://leetcode.com/problems/word-search-ii/)                                                               |
 |       | [300. Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)                               |
+| 11주 차 | [322. Coin Change](https://leetcode.com/problems/coin-change/)                                                                    |
+|       | [394. Decode String](https://leetcode.com/problems/decode-string/)                                                                 |
+| 12주 차 | [42. Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)                                                     |
+|       | [34. Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/)       |
